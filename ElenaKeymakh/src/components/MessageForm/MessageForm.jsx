@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import {Button, TextField, Fab} from '@material-ui/core';
+import {Send} from '@material-ui/icons';
 
 export class MessageForm extends Component
 {
@@ -42,15 +44,23 @@ export class MessageForm extends Component
 
     return (
       <div>
-        <div>
-          <input name="author" placeholder="Автор" onChange={this.onChangeInputHandler} value={author}/>
-        </div>
-        <div>
-       <textarea name="text" placeholder="Введите текст сообщения" onChange={this.onChangeInputHandler} value={text}/>
-        </div>
-        <div>
-          <button onClick={this.onSubmitForm}>Отправить сообщение</button>
-        </div>
+          <TextField
+            variant="outlined"
+            name="author"
+            label="Автор"
+            onChange={this.onChangeInputHandler}
+            value={author}
+          />
+          <TextField
+            variant="outlined"
+            name="text"
+            label="Введите текст сообщения"
+            onChange={this.onChangeInputHandler}
+            value={text}
+            multiline
+            autoFocus
+          />
+        <Fab variant="round" color="primary" onClick={this.onSubmitForm}><Send /></Fab>
       </div>
     );
   }
