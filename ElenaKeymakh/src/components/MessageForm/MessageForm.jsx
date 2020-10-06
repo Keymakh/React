@@ -26,6 +26,7 @@ export class MessageForm extends Component
   onSubmitForm = () => {
     const {text} = this.state;
     const {onSend} = this.props;
+
     if(!text){
       alert('Введите текст сообщения');
       return;
@@ -37,6 +38,15 @@ export class MessageForm extends Component
     }
     console.log(this.state);
   };
+
+  onSubmitFormEnter = (e) => {
+    if (e.keyCode === 13 && e.ctrlKey){
+      e.preventDefault();
+      this.onSubmitForm(e);
+    }
+    else
+      return false;
+  }
 
   render()
   {
@@ -59,8 +69,9 @@ export class MessageForm extends Component
             value={text}
             multiline
             autoFocus
+            onKeyDown={this.onSubmitFormEnter}
           />
-        <Fab variant="round" color="primary" onClick={this.onSubmitForm}><Send /></Fab>
+        <Fab className="sendBtn" variant="round" color="primary" onClick={this.onSubmitForm}><Send /></Fab>
       </div>
     );
   }

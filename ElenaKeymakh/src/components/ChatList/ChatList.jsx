@@ -1,25 +1,21 @@
-import React, {Component} from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import Divider from '@material-ui/core/Divider';
-import InboxIcon from '@material-ui/icons/Inbox';
+import React, {Component} from "react";
+import {List, ListItem, Divider } from '@material-ui/core';
+import {chats} from "../../helpers/chatsData";
+
+import './ChatList.scss'
 
 export class ChatList extends Component {
   state = {
-    chats: ['Work', 'My dear Friend', 'Sister',]
+   chats,
   }
 
   render() {
-    const {chats} = this.state;
-
-    return (<div className="chat">{chats}</div>);
-    /**const {chats} = this.state;
-
-     return this.state.chats.map((item, index) =>
-     <div> {...item} key={index} </div>
-     )*/
+    return (
+      <div className='chatList'>
+        <List>
+          {this.state.chats.map((item,idx) => <ListItem className="chatListItem" key={idx}>{item}</ListItem>)}
+        </List>
+      </div>
+    )
   }
 }

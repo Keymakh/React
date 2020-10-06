@@ -7,6 +7,6 @@ export class MessageList extends Component {
 
           return this.props.items.map((item, index) =>
             <Message {...item} key={item.id} />
-            )
+            );
   };
 }
